@@ -1,7 +1,7 @@
 package com.meritamerica.assignment1;
 /**
- * 
- * @author Ahmad
+ * This class contains the information pertaining to the account holder
+ * @author Ahmad Habibzad
  *
  */
 public class AccountHolder {
@@ -35,39 +35,39 @@ public class AccountHolder {
 	}
 	
 	/* 
+	 * =======
 	 * Getters
-	 * ============================
+	 * =======
 	 */
 	
-	//Get First Name
 	public String getFirstName() {
 		return firstName;
 	}
 	
-	//Get Middle Name
 	public String getMiddleName() {
 		return middleName;
 	}
-	//Get Last Name
+	
 	public String getLastName() {
 		return lastName;
 	}
-	//Get Social Security Number
+	
 	public String getSSN() {
 		return ssn;
 	}
-	//Get Checking Account
+	
 	public CheckingAccount getCheckingAccount() {
 		return new CheckingAccount(checkingAccountOpeningBalance);
 	}
-	//Get Saving Account
+	
 	public SavingsAccount getSavingsAccount() {
 		return new SavingsAccount(savingsAccountOpeningBalance);
 	}
 	
 	/* 
+	 * =======
 	 * Setters
-	 * ============================
+	 * =======
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -94,12 +94,10 @@ public class AccountHolder {
 	}
 	
 	//instance variables
-		private String firstName;
-		private String middleName; 
-		private String lastName; 
-		private String ssn; 
-		private double checkingAccountOpeningBalance; 
-		private double savingsAccountOpeningBalance;
-	
-	
+	private String firstName;
+	private String middleName; 
+	private String lastName; 
+	private String ssn; 
+	private double checkingAccountOpeningBalance; 
+	private double savingsAccountOpeningBalance;
 }
