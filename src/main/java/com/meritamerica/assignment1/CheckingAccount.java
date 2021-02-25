@@ -1,11 +1,22 @@
 package com.meritamerica.assignment1;
+/*
+ * File: CheckingAccount.java
+ * --------------------------
+ * A checking account has a balance, and an annual interest rate of 0.01%. 
+ * It is possible to withdraw and deposit funds into the account which affects its balance. 
+ * It is also possible to determine the future value of the account balance 
+ * based on the interest calculation given N years.
+ */
 
 public class CheckingAccount {
-	//Default Constructor
+	/*
+	 * Default constructor makes sure that the opening balance is not negative
+	 */
 	CheckingAccount(double openingBalance) {
-		this.balance = openingBalance;
+		setBalance(openingBalance);
 	}
 	
+	//Getters
 	double getBalance() {
 		return balance;
 	}
@@ -14,6 +25,15 @@ public class CheckingAccount {
 		return interestRate;
 	}
 	
+	//Setters
+	
+	void setBalance(double amount) {
+		if(amount>0) {
+			balance+=amount;
+		}
+	}
+	
+	//Withdraw Method
 	boolean withdraw(double amount) {
 		if(amount<balance && amount>0) {
 			balance-=amount;
@@ -23,6 +43,7 @@ public class CheckingAccount {
 		}
 	}
 	
+	//Deposit Method
 	boolean deposit(double amount) {
 		if(amount>0) {
 			balance+=amount;
@@ -32,6 +53,16 @@ public class CheckingAccount {
 			return false;
 		}
 	}
+	
+	/*
+	 * * Future Value Method:
+	 * --------------------
+	 * The formula for future value is FV = PV(1+i) to the power of n
+	 * FV: future value
+	 * PV: present value
+	 * i: interest rate
+	 * n: number of periods/years
+	 */
 	
 	double futureValue(int years) {
 		return balance*Math.pow((1+interestRate), years);
