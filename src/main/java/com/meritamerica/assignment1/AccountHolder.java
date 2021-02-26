@@ -30,8 +30,8 @@ public class AccountHolder {
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.ssn=ssn;
-		this.checkingAccountOpeningBalance = checkingAccountOpeningBalance;
-		this.savingsAccountOpeningBalance = savingsAccountOpeningBalance;
+		this.checkingAccountBalance = checkingAccountOpeningBalance;
+		this.savingsAccountBalance = savingsAccountOpeningBalance;
 	}
 	
 	/* 
@@ -57,11 +57,11 @@ public class AccountHolder {
 	}
 	
 	public CheckingAccount getCheckingAccount() {
-		return new CheckingAccount(checkingAccountOpeningBalance);
+		return new CheckingAccount(checkingAccountBalance);
 	}
 	
 	public SavingsAccount getSavingsAccount() {
-		return new SavingsAccount(savingsAccountOpeningBalance);
+		return new SavingsAccount(savingsAccountBalance);
 	}
 	
 	/* 
@@ -88,9 +88,14 @@ public class AccountHolder {
 	//To String Method
 	@Override
 	public String toString() {
-		return "Name: " + firstName + " " + middleName + " " + lastName + "\n "
-				+ "SSN: " + ssn + "\nChecking Account Balance: $" + checkingAccountOpeningBalance
-				+ "\nSavings Account Balance: $" + savingsAccountOpeningBalance;
+		return  "Name: " + firstName + " " + middleName + " " + lastName	+ 
+				"\nSSN: " + ssn + 
+				"\nChecking Account Balance: " + checkingAccountBalance + 
+				"\nChecking Account Interest Rate: " + getCheckingAccount().getInterestRate()+ 
+				"\nChecking Account Balance in 3 years: " + getCheckingAccount().futureValue(3)+ 
+				"\nSavings Account Balance: "	+ savingsAccountBalance+ 
+				"\nSavings Account Interest Rate: " + getSavingsAccount().getInterestRate()+ 
+				"\nSavings Account Balance in 3 years: " + getSavingsAccount().futureValue(3);
 	}
 	
 	//instance variables
@@ -98,6 +103,6 @@ public class AccountHolder {
 	private String middleName; 
 	private String lastName; 
 	private String ssn; 
-	private double checkingAccountOpeningBalance; 
-	private double savingsAccountOpeningBalance;
+	private double checkingAccountBalance; 
+	private double savingsAccountBalance;
 }
