@@ -74,7 +74,7 @@ public class CheckingAccount {
 		return 
 				"Checking Account Balance: " + balance + 
 				"\nChecking Account InterestRate: " + interestRate + 
-				"Checking Account Balance in 3 years: ";
+				"Checking Account Balance in 3 years: " + futureValue(3);
 	}
 	
 	//Instance variables

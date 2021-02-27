@@ -72,7 +72,9 @@ public class SavingsAccount {
 
 	@Override
 	public String toString() {
-		return "SavingsAccount Balance: " + balance + "\nInterestRate=" + interestRate;
+		return "SavingsAccount Balance: " + balance + 
+				"\nInterestRate=" + interestRate +
+				"\nChecking Account Balance in 3 years: " + futureValue(3);
 	}
 	
 	//Instance variables

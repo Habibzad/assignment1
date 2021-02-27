@@ -30,8 +30,8 @@ public class AccountHolder {
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.ssn=ssn;
-		this.checkingAccountBalance = checkingAccountOpeningBalance;
-		this.savingsAccountBalance = savingsAccountOpeningBalance;
+		setCheckingAccountBalance(checkingAccountOpeningBalance);
+		setSavingsAccountBalance(savingsAccountOpeningBalance);
 	}
 	
 	/* 
@@ -83,6 +83,18 @@ public class AccountHolder {
 	
 	public void setSSN(String ssn) {
 		this.ssn = ssn;
+	}
+	
+	public void setCheckingAccountBalance(double amount) {
+		if(amount>0) {
+			this.checkingAccountBalance = amount;
+		}
+	}
+	
+	public void setSavingsAccountBalance(double amount) {
+		if(amount>0) {
+			this.savingsAccountBalance = amount;
+		}
 	}
 		
 	//To String Method
