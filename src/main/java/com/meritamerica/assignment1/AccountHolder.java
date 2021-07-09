@@ -5,116 +5,94 @@ package com.meritamerica.assignment1;
  *
  */
 public class AccountHolder {
+	
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private String ssn;
+	private CheckingAccount checkingAccount;
+	private SavingsAccount savingsAccount;
+	
 	//Default Constructor
-	AccountHolder(){
-		
-	}
+	AccountHolder(){}
 	//Parametarized Constructor
-	/**
-	 * 
-	 * @param firstName First Name
-	 * @param middleName Middle name
-	 * @param lastName Last Name
-	 * @param ssn	Social Security Number
-	 * @param checkingAccountOpeningBalance
-	 * @param savingsAccountOpeningBalance
-	 */
-	AccountHolder(
+	public AccountHolder(
 			String firstName, 
 			String middleName, 
 			String lastName, 
-			String ssn, 
+			String ssn,
 			double checkingAccountOpeningBalance, 
-			double savingsAccountOpeningBalance){
+			double savingsAccountOpeningBalance) 
+	{
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
-		this.ssn=ssn;
-		setCheckingAccountBalance(checkingAccountOpeningBalance);
-		setSavingsAccountBalance(savingsAccountOpeningBalance);
+		this.ssn = ssn;
+		this.checkingAccount = new CheckingAccount(checkingAccountOpeningBalance);
+		this.savingsAccount = new SavingsAccount(savingsAccountOpeningBalance);
 	}
 	
-	/* 
-	 * =======
-	 * Getters
-	 * =======
-	 */
-	
+	//Getters and Setters	
 	public String getFirstName() {
 		return firstName;
 	}
-	
-	public String getMiddleName() {
-		return middleName;
-	}
-	
-	public String getLastName() {
-		return lastName;
-	}
-	
-	public String getSSN() {
-		return ssn;
-	}
-	
-	public CheckingAccount getCheckingAccount() {
-		return new CheckingAccount(checkingAccountBalance);
-	}
-	
-	public SavingsAccount getSavingsAccount() {
-		return new SavingsAccount(savingsAccountBalance);
-	}
-	
-	/* 
-	 * =======
-	 * Setters
-	 * =======
-	 */
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-	
+
+	public String getLastName() {
+		return lastName;
+	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	public void setSSN(String ssn) {
+
+	public String getSsn() {
+		return ssn;
+	}
+
+	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
-	
-	public void setCheckingAccountBalance(double amount) {
-		if(amount>0) {
-			this.checkingAccountBalance = amount;
-		}
+
+	public CheckingAccount getCheckingAccount() {
+		return checkingAccount;
 	}
-	
-	public void setSavingsAccountBalance(double amount) {
-		if(amount>0) {
-			this.savingsAccountBalance = amount;
-		}
+
+	public void setCheckingAccount(CheckingAccount checkingAccount) {
+		this.checkingAccount = checkingAccount;
 	}
-		
-	//To String Method
+
+	public SavingsAccount getSavingsAccount() {
+		return savingsAccount;
+	}
+
+	public void setSavingsAccount(SavingsAccount savingsAccount) {
+		this.savingsAccount = savingsAccount;
+	}
+
+	//ToString Method
 	@Override
 	public String toString() {
-		return  "Name: " + firstName + " " + middleName + " " + lastName	+ 
-				"\nSSN: " + ssn + 
-				"\nChecking Account Balance: " + checkingAccountBalance + 
-				"\nChecking Account Interest Rate: " + getCheckingAccount().getInterestRate()+ 
-				"\nChecking Account Balance in 3 years: " + getCheckingAccount().futureValue(3)+ 
-				"\nSavings Account Balance: "	+ savingsAccountBalance+ 
-				"\nSavings Account Interest Rate: " + getSavingsAccount().getInterestRate()+ 
-				"\nSavings Account Balance in 3 years: " + getSavingsAccount().futureValue(3);
+		DecimalFormat df = new DecimalFormat("#.##");
+		df.setMaximumFractionDigits(8);
+		return " Name: " + firstName + " " + middleName + " " + lastName
+				+"\n SSN: " + ssn 
+				+"\n CheckingAccount Balance: $" + checkingAccount.getBalance() 
+				+"\n CheckingAccount Interest Rate: " +df.format(checkingAccount.getInterestRate())  
+				+"\n CheckingAccount Balance in 3 Years: " + df.format(checkingAccount.futureValue(3)) 
+				+"\n SavingsAccount Balance: $" + savingsAccount.getBalance()
+				+"\n SavingsAccount Interest Rate: " + savingsAccount.getInterestRate()
+				+"\n SavingsAccount Balance in 3 years: " + df.format(savingsAccount.futureValue(3));
 	}
-	
-	//instance variables
-	private String firstName;
-	private String middleName; 
-	private String lastName; 
-	private String ssn; 
-	private double checkingAccountBalance; 
-	private double savingsAccountBalance;
 }
